@@ -1,0 +1,59 @@
+#+Title: Cascalog for Data Processing
+#+Author: Tom O'Brien
+#+Email: thomas.obrien86@gmail.com
+#+REVEAL_ROOT: //cdn.jsdelivr.net/reveal.js/2.5.0/
+#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:nil reveal_control:t
+#+OPTIONS: reveal_mathjax:t reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil
+#+OPTIONS: reveal_width:1200 reveal_height:800
+#+OPTIONS: toc:1
+#+REVEAL_MARGIN: 0.1
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_TRANS: cube
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Org-Reveal Introduction.">
+#+REVEAL_PREAMBLE: my-preamble
+#+REVEAL_POSTAMBLE: <p> Created by yjwen. </p>
+
+* Introduction
+
+** What is Cascalog?
+   Cascalog is a Clojure library to design Mapreduce jobs
+
+*** Cascading
+    + Native MapReduce is gross.
+      #+BEGIN_SRC java
+        private static void awful
+      #+END_SRC
+    + Cascading makes it better, but still Java
+
+*** Datalog
+    + Subset of Prolog (logic programming!)
+    + Ask questions of data in declarative manner
+    + Generally awesome
+
+*** (apply clojure [Cascading Datalog]) => Cascalog
+    + Lots of data around these days
+    + (Sometimes) necessary to distribute workload
+    + No time for native MapReduce
+    + LMAO if you're not asking questions of your data with datalog
+    + Power of lisp lets us (Nathan Marz + friends) create a language to do this
+* Basics
+** A first Cascalog query
+*** A
+     #+BEGIN_SRC clojure
+       (require '[cascalog.api :refer :all])
+       
+       (def source
+        	[["a" 1]
+          ["b" 2]
+          ["c" 3]
+          ["d" 4]])
+       
+       (?- (stdout)
+           (<- [?x ?y]
+               (source ?x ?y)))
+     #+END_SRC
+*** B
+* Examples
